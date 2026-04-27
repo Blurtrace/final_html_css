@@ -1,0 +1,691 @@
+
+    :root {
+      --negro:       #0d0d0d;
+      --carbon:      #1a1a1a;
+      --cobre:       #b5622a;
+      --cobre-claro: #d4844e;
+      --crema:       #f5ede0;
+      --blanco:      #ffffff;
+      --gris-texto:  #aaa;
+      --fuente-titulo: 'Playfair Display', serif;
+      --fuente-cuerpo: 'Lato', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box; /* el relleno/borde no agranda el elemento */
+    }
+
+    /* Configuración base del cuerpo */
+    body {
+      background-color: var(--negro);
+      color: var(--crema);
+      font-family: var(--fuente-cuerpo);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    /* Utilidad: texto centrado */
+    .text-center { 
+        text-align: center; 
+    }
+
+    header {
+      position: sticky;       /* se queda pegada arriba al hacer scroll */
+      top: 0;
+      z-index: 100;           /* se pone encima de todo lo demás */
+      background-color: rgba(13,13,13,0.95);
+      border-bottom: 1px solid var(--cobre);
+      padding: 0 2rem;
+      height: 70px;
+      display: flex;          /* Flexbox: coloca hijos en fila */
+      align-items: center;    /* centra verticalmente */
+      justify-content: space-between; /* logo a la izquierda, nav a la derecha */
+    }
+
+    /* Logo del festival */
+    .logo {
+      font-family: var(--fuente-titulo);
+      font-size: 1.4rem;
+      color: var(--cobre);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .logo span {
+      color: var(--crema);
+    }
+
+    /* Navegación de escritorio */
+    nav ul {
+      list-style: none;       /* quita los puntos de la lista */
+      display: flex;
+      gap: 2rem;              /* espacio entre cada enlace */
+    }
+    nav ul li a {
+      color: var(--crema);
+      text-decoration: none;  /* quita el subrayado */
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s; /* animación suave al pasar el mouse */
+    }
+    nav ul li a:hover {
+      color: var(--cobre);
+    }
+
+    /* Botón hamburguesa – solo visible en móvil */
+    .hamburger {
+      display: none;          /* oculto en escritorio */
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 2px;
+      background-color: var(--crema);
+      transition: all 0.3s;
+    }
+
+    /* Menú móvil (aparece con JS al tocar hamburguesa) */
+    .nav-mobile {
+      display: none;          /* oculto por defecto */
+      position: fixed;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      background-color: var(--carbon);
+      z-index: 99;
+      padding: 1.5rem 2rem;
+      border-bottom: 1px solid var(--cobre);
+    }
+    .nav-mobile.open {
+      display: block;         /* se muestra cuando JS agrega la clase "open" */
+    }
+    .nav-mobile ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .nav-mobile ul li a {
+      color: var(--crema);
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;      /* ocupa toda la altura de la pantalla */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      overflow: hidden;
+    }
+
+    /* Imagen de fondo con overlay oscuro */
+    .hero::before {
+      content: '';            /* pseudo-elemento vacío solo para el fondo */
+      position: absolute;
+      inset: 0;               /* cubre todo el hero */
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.8) 100%),
+        url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80') center/cover no-repeat;
+      z-index: 0;
+    }
+
+    /* El contenido del hero va por encima del fondo */
+    .hero-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 5px;
+      text-transform: uppercase;
+      color: var(--cobre);
+      margin-bottom: 1rem;
+      /* Animación de entrada: el elemento sube desde abajo */
+      animation: fadeUp 1s ease both;
+    }
+
+    .hero h1 {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(3rem, 8vw, 7rem); /* tamaño fluido según pantalla */
+      font-weight: 900;
+      line-height: 1;
+      color: var(--blanco);
+      margin-bottom: 0.5rem;
+      animation: fadeUp 1s ease 0.2s both; /* 0.2s de retraso */
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--cobre-claro);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: var(--crema);
+      opacity: 0.85;
+      max-width: 600px;
+      margin: 1.5rem auto 2.5rem;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .hero-fecha {
+      font-size: 0.8rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--gris-texto);
+      margin-bottom: 2.5rem;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+
+    /* Botón principal (CTA = Call To Action) */
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: var(--cobre);
+      color: var(--blanco);
+      text-decoration: none;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      border: 2px solid var(--cobre);
+      transition: all 0.3s;
+      animation: fadeUp 1s ease 0.6s both;
+    }
+    .btn-primary:hover {
+      background-color: transparent;
+      color: var(--cobre);
+    }
+
+    /* =============================================
+       KEYFRAME: fadeUp
+       Define cómo funciona la animación de entrada.
+       Los elementos empiezan abajo (translateY 30px)
+       e invisibles (opacity 0), y suben a su lugar.
+    ============================================= */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    section {
+      padding: 5rem 2rem;
+    }
+
+    .section-label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--cobre);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--fuente-titulo);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+      color: var(--blanco);
+    }
+
+    .section-desc {
+      max-width: 650px;
+      color: var(--gris-texto);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    /* Separador decorativo */
+    .divider {
+      width: 60px;
+      height: 2px;
+      background-color: var(--cobre);
+      margin: 1.5rem 0;
+    }
+    .divider.center {
+      margin: 1.5rem auto;
+    }
+
+    .events {
+      background-color: var(--carbon);
+    }
+
+    .events-header {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+    }
+
+    /* Tabla de horarios */
+    .table-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      overflow-x: auto; /* scroll horizontal si la tabla no cabe */
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse; /* une los bordes de las celdas */
+      font-size: 0.9rem;
+    }
+
+    thead {
+      background-color: var(--cobre);
+    }
+    thead th {
+      padding: 1rem 1.2rem;
+      text-align: left;
+      color: var(--blanco);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: background 0.2s;
+    }
+    tbody tr:hover {
+      background-color: rgba(181,98,42,0.1); /* fondo cobre tenue al pasar mouse */
+    }
+
+    tbody td {
+      padding: 1rem 1.2rem;
+      color: var(--crema);
+      vertical-align: top;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      background-color: rgba(181,98,42,0.2);
+      color: var(--cobre-claro);
+      border-radius: 2px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+    }
+
+    .btn-reservar {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid var(--cobre);
+      color: var(--cobre);
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s;
+      cursor: pointer;
+      background: none;
+    }
+    .btn-reservar:hover {
+      background-color: var(--cobre);
+      color: var(--blanco);
+    }
+
+    .about {
+      background-color: var(--negro);
+    }
+
+    .about-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* dos columnas iguales */
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .about-img {
+      position: relative;
+    }
+    .about-img img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover; /* recorta la imagen sin deformarla */
+      display: block;
+    }
+    /* Detalle decorativo: borde desplazado */
+    .about-img::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      right: -20px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--cobre);
+      z-index: -1; /* detrás de la imagen */
+    }
+
+    /* Lista de valores / filosofía */
+    .valores-lista {
+      list-style: none;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .valores-lista li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--crema);
+      font-size: 0.95rem;
+    }
+    .valores-lista li::before {
+      content: '◆';           /* rombo decorativo */
+      color: var(--cobre);
+      font-size: 0.6rem;
+      flex-shrink: 0;         /* que no se encoja */
+    }
+
+    .chefs {
+      background-color: var(--carbon);
+    }
+
+    .chefs-header {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .chefs-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+      gap: 2rem;
+    }
+
+    .chef-card {
+      background-color: var(--negro);
+      overflow: hidden;
+      transition: transform 0.3s; /* sube suavemente al hacer hover */
+    }
+    .chef-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .chef-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(40%);
+      transition: filter 0.4s;
+    }
+    .chef-card:hover img {
+      filter: grayscale(0%);
+    }
+
+    .chef-info {
+      padding: 1.5rem;
+    }
+    .chef-nombre {
+      font-family: var(--fuente-titulo);
+      font-size: 1.3rem;
+      color: var(--blanco);
+      margin-bottom: 0.25rem;
+    }
+    .chef-especialidad {
+      font-size: 0.8rem;
+      color: var(--cobre);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    .chef-desc {
+      font-size: 0.9rem;
+      color: var(--gris-texto);
+      line-height: 1.7;
+    }
+
+    .multimedia {
+      background-color: var(--negro);
+    }
+
+    .multimedia-header {
+      max-width: 1200px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .gallery {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 250px 250px;
+      gap: 1rem;
+    }
+
+    /* Primera imagen más grande (ocupa 2 filas) */
+    .gallery-item:first-child {
+      grid-row: span 2;       /* ocupa 2 filas */
+    }
+
+    .gallery-item {
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s; /* zoom suave al hover */
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Overlay con texto al hacer hover en la galería */
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(181,98,42,0.7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    .gallery-overlay span {
+      color: var(--blanco);
+      font-family: var(--fuente-titulo);
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+    }
+
+    footer {
+      background-color: var(--carbon);
+      border-top: 1px solid var(--cobre);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr; /* columnas de distinto ancho */
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand .logo {
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+    .footer-brand p {
+      color: var(--gris-texto);
+      font-size: 0.9rem;
+      max-width: 300px;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Redes sociales */
+    .social-links {
+      list-style: none;
+      display: flex;
+      gap: 1rem;
+    }
+    .social-links li a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border: 1px solid rgba(181,98,42,0.5);
+      color: var(--cobre);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.3s;
+    }
+    .social-links li a:hover {
+      background-color: var(--cobre);
+      color: var(--blanco);
+    }
+
+    /* Columnas del footer */
+    .footer-col h4 {
+      font-family: var(--fuente-titulo);
+      color: var(--blanco);
+      margin-bottom: 1.2rem;
+      font-size: 1.1rem;
+    }
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-col ul li a {
+      color: var(--gris-texto);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    .footer-col ul li a:hover {
+      color: var(--cobre);
+    }
+    .footer-col address {
+      font-style: normal;
+      color: var(--gris-texto);
+      font-size: 0.9rem;
+      line-height: 1.9;
+    }
+
+    /* Línea inferior del footer */
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--gris-texto);
+    }
+
+    /* Lista de patrocinadores */
+    .patrocinadores {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .patrocinadores li {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 1024px) {
+      .chefs-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      /* Ocultar nav de escritorio, mostrar hamburguesa */
+      nav { display: none; }
+      .hamburger { display: flex; }
+
+      /* Hero más pequeño */
+      .hero h1 { font-size: 3rem; }
+
+      /* About: de 2 columnas a 1 columna */
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      /* Imagen va debajo del texto en móvil */
+      .about-img { order: -1; }
+      .about-img::after { display: none; }
+      .about-img img { height: 300px; }
+
+      /* Chefs: 1 columna */
+      .chefs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      /* Galería: 2 columnas, filas automáticas */
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .gallery-item:first-child {
+        grid-row: span 1; /* vuelve a ocupar 1 fila */
+      }
+      .gallery-item { height: 200px; }
+
+      /* Footer: 1 columna */
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      section { padding: 3rem 1.2rem; }
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+      .gallery-item { height: 220px; }
+    }

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fusión Gourmet – Festival Gastronómico de Vanguardia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="logo">Fusión<span> Gourmet</span></div>
+
+    <nav>
+      <ul>
+        <li><a href="#catas">Catas</a></li>
+        <li><a href="#chefs">Chefs</a></li>
+        <li><a href="#sobre">El Festival</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </nav>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div class="nav-mobile" id="navMobile">
+    <ul>
+      <li><a href="#catas" onclick="cerrarMenu()">Catas</a></li>
+      <li><a href="#chefs" onclick="cerrarMenu()">Chefs</a></li>
+      <li><a href="#sobre" onclick="cerrarMenu()">El Festival</a></li>
+      <li><a href="#galeria" onclick="cerrarMenu()">Galería</a></li>
+      <li><a href="#contacto" onclick="cerrarMenu()">Contacto</a></li>
+    </ul>
+  </div>
+
+  <main>
+
+    <section class="hero" id="inicio">
+      <div class="hero-content">
+        <span class="hero-eyebrow">13 · 14 · 15 de Noviembre, 2025</span>
+        <h1>Sabores de<br /><em>Vanguardia</em></h1>
+        <p class="hero-fecha">Cartagena, Colombia &nbsp;|&nbsp; Un festival único</p>
+        <p class="hero-subtitle">
+          Tres días de alta cocina, catas exclusivas y experiencias culinarias
+          que transformarán tu paladar para siempre.
+        </p>
+        <a href="#catas" class="btn-primary">Reservar Entrada</a>
+      </div>
+    </section>
+
+    <section class="events" id="catas">
+      <div class="events-header">
+        <span class="section-label">Programa Oficial</span>
+        <h2 class="section-title">Horario de Catas</h2>
+        <div class="divider"></div>
+        <p class="section-desc">
+          Cada experiencia es diseñada por chefs de talla mundial. Las plazas son
+          limitadas — asegura la tuya con anticipación.
+        </p>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Hora</th>
+              <th>Chef</th>
+              <th>Experiencia</th>
+              <th>Modalidad</th>
+              <th>Tickets</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>14:00</td>
+              <td>Chef Ana López</td>
+              <td>Cata de vinos de autor con maridaje mediterráneo</td>
+              <td><span class="tag">Presencial</span></td>
+              <td><button class="btn-reservar">Comprar</button></td>
+            </tr>
+            <tr>
+              <td>15:30</td>
+              <td>Chef Ana López</td>
+              <td>Maridaje de mesa: sabores del Caribe colombiano</td>
+              <td><span class="tag">Presencial</span></td>
+              <td><button class="btn-reservar">Comprar</button></td>
+            </tr>
+            <tr>
+              <td>17:00</td>
+              <td>Chef Marco Reyes</td>
+              <td>Taller de técnicas de vanguardia: esferificación</td>
+              <td><span class="tag">Taller</span></td>
+              <td><button class="btn-reservar">Comprar</button></td>
+            </tr>
+            <tr>
+              <td>18:30</td>
+              <td>Chef Valentina Cruz</td>
+              <td>Cena de degustación: menú de 7 tiempos</td>
+              <td><span class="tag">Premium</span></td>
+              <td><button class="btn-reservar">Comprar</button></td>
+            </tr>
+            <tr>
+              <td>20:00</td>
+              <td>Chef Marco Reyes</td>
+              <td>Maridaje de noche con cocteles artesanales</td>
+              <td><span class="tag">Presencial</span></td>
+              <td><button class="btn-reservar">Comprar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="about" id="sobre">
+      <div class="about-grid">
+        <!-- Texto informativo -->
+        <div class="about-text">
+          <span class="section-label">Nuestra Filosofía</span>
+          <h2 class="section-title">Innovación que<br />se saborea</h2>
+          <div class="divider"></div>
+          <p class="section-desc">
+            Fusión Gourmet nació del deseo de llevar la cocina de autor a un espacio
+            donde el arte, la ciencia y la tradición se encuentran en el plato.
+            Cada año reunimos a los mejores exponentes de la gastronomía para
+            celebrar el talento colombiano e internacional.
+          </p>
+
+
+          <ul class="valores-lista">
+            <li>Sostenibilidad: ingredientes de origen local y responsable</li>
+            <li>Innovación: técnicas de vanguardia y nuevos sabores</li>
+            <li>Cultura: celebración de la identidad culinaria colombiana</li>
+            <li>Inclusión: experiencias para todos los paladares</li>
+            <li>Excelencia: solo chefs con reconocimiento internacional</li>
+          </ul>
+        </div>
+
+        <!-- Imagen decorativa -->
+        <div class="about-img">
+          <img
+            src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80"
+            alt="Plato gourmet del festival"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="chefs" id="chefs">
+      <div class="chefs-header">
+        <span class="section-label">Estrellas del Festival</span>
+        <h2 class="section-title">Nuestros Chefs</h2>
+        <div class="divider center"></div>
+        <p class="section-desc" style="margin: 0 auto; text-align:center;">
+          Maestros de la gastronomía que convierten ingredientes en emociones.
+        </p>
+      </div>
+      <div class="chefs-grid">
+        <!-- Tarjeta Chef 1 -->
+        <article class="chef-card">
+          <img src="https://images.unsplash.com/photo-1583394293214-0d15c7e9a2d8?w=600&q=80" alt="Chef Ana López" />
+          <div class="chef-info">
+            <h3 class="chef-nombre">Ana López</h3>
+            <p class="chef-especialidad">Cocina de Mar & Maridaje</p>
+            <p class="chef-desc">Reconocida con estrella Michelin por su reinterpretación de los sabores del Caribe con técnicas europeas.</p>
+          </div>
+        </article>
+        <!-- Tarjeta Chef 2 -->
+        <article class="chef-card">
+          <img src="https://images.unsplash.com/photo-1607631568010-a87245c0daf8?w=600&q=80" alt="Chef Marco Reyes" />
+          <div class="chef-info">
+            <h3 class="chef-nombre">Marco Reyes</h3>
+            <p class="chef-especialidad">Gastronomía Molecular</p>
+            <p class="chef-desc">Pionero en esferificación y cocina de vanguardia en Latinoamérica. Formado en elBulli, Barcelona.</p>
+          </div>
+        </article>
+        <!-- Tarjeta Chef 3 -->
+        <article class="chef-card">
+          <img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=600&q=80" alt="Chef Valentina Cruz" />
+          <div class="chef-info">
+            <h3 class="chef-nombre">Valentina Cruz</h3>
+            <p class="chef-especialidad">Alta Cocina Colombiana</p>
+            <p class="chef-desc">Embajadora de los sabores andinos, selva y llanura. Su menú de 7 tiempos es el más reservado del festival.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="multimedia" id="galeria">
+      <div class="multimedia-header">
+        <span class="section-label">Visual</span>
+        <h2 class="section-title">Galería del Festival</h2>
+        <div class="divider center"></div>
+      </div>
+      <div class="gallery">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?w=800&q=80" alt="Platos de alta cocina" />
+          <div class="gallery-overlay"><span>Alta Cocina</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80" alt="Cata de vinos" />
+          <div class="gallery-overlay"><span>Catas</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1551218808-94e220e084d2?w=600&q=80" alt="Chef en acción" />
+          <div class="gallery-overlay"><span>Talleres</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1541014741259-de529411b96a?w=600&q=80" alt="Mesa de degustación" />
+          <div class="gallery-overlay"><span>Degustación</span></div>
+        </div>
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1560053608-13721e0d08a0?w=600&q=80" alt="Ingredientes frescos" />
+          <div class="gallery-overlay"><span>Ingredientes</span></div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- fin de main -->
+
+  <!-- ==============================================
+    pie de página con contacto y enlaces
+  =============================================== -->
+  <footer id="contacto">
+    <div class="footer-grid">
+
+      <!--  marca y redes -->
+      <div class="footer-brand">
+        <span class="logo">Fusión<span> Gourmet</span></span>
+        <p>Un festival que celebra la gastronomía de autor, la innovación culinaria y el sabor colombiano en todo su esplendor.</p>
+        <!-- Lista de redes sociales  -->
+        <ul class="social-links">
+          <li><a href="#" aria-label="Instagram">IG</a></li>
+          <li><a href="#" aria-label="Facebook">FB</a></li>
+          <li><a href="#" aria-label="Twitter/X">X</a></li>
+          <li><a href="#" aria-label="YouTube">YT</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 2: enlaces rápidos -->
+      <div class="footer-col">
+        <h4>Menú</h4>
+        <ul>
+          <li><a href="#catas">Catas y Talleres</a></li>
+          <li><a href="#chefs">Chefs Invitados</a></li>
+          <li><a href="#sobre">Sobre el Festival</a></li>
+          <li><a href="#galeria">Galería</a></li>
+        </ul>
+      </div>
+
+      <!-- Columna 3: contacto -->
+      <div class="footer-col">
+        <h4>Contacto</h4>
+        <address>
+          Centro de Convenciones<br />
+          Cartagena de Indias, Colombia<br />
+          <br />
+          info@fusiongourmet.co<br />
+          +57 300 000 0000
+        </address>
+      </div>
+
+    </div>
+
+    <!-- copyright + patrocinadores -->
+    <div class="footer-bottom">
+      <p>© 2025 Fusión Gourmet. Todos los derechos reservados.</p>
+
+      <!-- Lista de patrocinadores  -->
+      <ul class="patrocinadores">
+        <li>Sponsor Gold</li>
+        <li>Sponsor Silver</li>
+        <li>Sponsor Bronze</li>
+      </ul>
+    </div>
+  </footer>
+    <script src="script.js"></script>
+</body>
+</html>
